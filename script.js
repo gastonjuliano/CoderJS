@@ -271,14 +271,6 @@ function listarhabilidades(idjugador) {
 
 */
 
-// Swal.fire({
-// 	title: "Esta seguro de eliminar el producto ?",
-// 	showCancelButton: true,
-// 	cancelButtonColor: "#d33",
-// 	confirmButtonText: "Si, eliminarlo",
-// 	cancelButtonText: "Cancelar, toque sin querer!",
-// });
-
 const clave_cuentas = "cuenta";
 let listacuentas = new Array();
 
@@ -351,19 +343,26 @@ function validar_formulario() {
 
 	let arreglo_mensajes = new Array();
 	if (!input_nombre) {
-		arreglo_mensajes.push("Ingrese nombre");
+		arreglo_mensajes.push("nombre");
 	}
 	if (!input_contrasenia) {
-		arreglo_mensajes.push("Ingrese contrasenia");
+		arreglo_mensajes.push("contrasenia");
 	}
 	if (arreglo_mensajes.length > 0) {
-		let lista = document.createElement("ul");
-		lista.textContent = "No es posible cargar los datos: ";
+		// let lista = document.createElement("ul");
+		// lista.textContent = "No es posible cargar los datos: ";
 
-		arreglo_mensajes.forEach((element) => {
-			lista.appendChild(crear_li(element));
+		// arreglo_mensajes.forEach((element) => {
+		// 	lista.appendChild(crear_li(element));
+		// });
+		// avisos.appendChild(lista);
+
+		Swal.fire({
+			title: "Fallo la creacion del usuario",
+			text: "Para continuar ingrese " + arreglo_mensajes.join(" y "),
+			confirmButtonText: "Intentar Denuevo",
+			confirmButtonColor: "#ff0000",
 		});
-		avisos.appendChild(lista);
 	}
 
 	return arreglo_mensajes.length == 0;
