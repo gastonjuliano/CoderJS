@@ -56,14 +56,20 @@ function validar_formulario() {
 		arreglo_mensajes.push("Ingrese la ruta de la imagen");
 	}
 	if (arreglo_mensajes.length > 0) {
-		let lista = document.createElement("ul");
+		/*let lista = document.createElement("ul");
 		lista.textContent = "No es posible cargar los datos: ";
 
 		arreglo_mensajes.forEach((element) => {
 			lista.appendChild(crear_li(element));
 		});
 
-		avisos.appendChild(lista);
+		avisos.appendChild(lista);*/
+		Swal.fire({
+			title: "Fallo la creacion del personaje",
+			text: "Para continuar ingrese " + arreglo_mensajes.join(" y "),
+			confirmButtonText: "Intentar Denuevo",
+			confirmButtonColor: "#ff0000",
+		});
 	}
 
 	return arreglo_mensajes.length == 0;
