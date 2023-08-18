@@ -271,6 +271,14 @@ function listarhabilidades(idjugador) {
 
 */
 
+// Swal.fire({
+// 	title: "Esta seguro de eliminar el producto ?",
+// 	showCancelButton: true,
+// 	cancelButtonColor: "#d33",
+// 	confirmButtonText: "Si, eliminarlo",
+// 	cancelButtonText: "Cancelar, toque sin querer!",
+// });
+
 const clave_cuentas = "cuenta";
 let listacuentas = new Array();
 
