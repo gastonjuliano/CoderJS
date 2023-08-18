@@ -1,0 +1,50 @@
+[
+    {
+        "danio": 20,
+        "nombre": "Bola de Fuego"
+    },
+    {
+        "danio": 15,
+        "nombre": "Lanza de Hielo"
+    },
+    {
+        "danio": 10,
+        "nombre": "Rayo"
+    },
+    {
+        "danio": 25,
+        "nombre": "Curacion"
+    },
+    {
+        "danio": 15,
+        "nombre": "Disparo"
+    },
+    {
+        "danio": 40,
+        "nombre": "Disparo Mortal"
+    },
+    {
+        "danio": 50,
+        "nombre": "Curacion Superior"
+    },
+    {
+        "danio": 20,
+        "nombre": "Golpe Siniestro"
+    },
+    {
+        "danio": 20,
+        "nombre": "Sentencia"
+    },
+    {
+        "danio": 25,
+        "nombre": "Choque Sagrado"
+    },
+    {
+        "danio": 15,
+        "nombre": "Bola de Sombras"
+    },
+    {
+        "danio": 25,
+        "nombre": "Choque de Tierra"
+    }
+]

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="cleanLocalStorage.js"></script>
+<script src="usuario.js"></script>
+<link rel="stylesheet" href="style.css">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+
     <title>Creador de Personajes</title>
 </head>
 
@@ -25,27 +26,24 @@
             <input type="text" placeholder="Raza" id="razapersonaje" /><br><br>
             <input type="text" placeholder="Genero" id="generopersonaje" /><br><br>
             <input type="text" placeholder="Clase" id="clasepersonaje" /><br><br>
-            <input type="text" placeholder="imagen" id="fotopersonaje" /><br><br>
-            <select name="sel1" id="selecthabilidades">
-            </select>
+            <!-- <input type="text" placeholder="imagen" id="fotopersonaje" /><br><br> -->
+            <label style="color: white;">Seleccione una Imagen
+                <select placeholder="imagen" id="fotopersonaje"></select>
+            </label>
+            </select><br><br>
+            <label style="color: white;">Seleccione una habilidad especial
+                <select name="sel1" id="selecthabilidades" multiple>
+                </select><br><br>
+            </label>
             <button type="button" id="btn_crear">Ingresar</button>
-
         </form>
-
         <br><br>
-
-
-
-
     </div>
     <div id="personajeCtn">
-
     </div>
-    <script src="sweetalert2.all.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="usuario.js"></script>
+    <script src="habilidades.js"></script>
+    <script src="imagenes.js"></script>
     <script src="personaje.js"></script>
-
 </body>
 
 </html>

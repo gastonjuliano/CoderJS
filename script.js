@@ -271,162 +271,119 @@ function listarhabilidades(idjugador) {
 
 */
 
-
-
-
-const clave_cuentas = "listaCuentas";
+const clave_cuentas = "cuenta";
 let listacuentas = new Array();
 
 let avisos = document.getElementById("avisoslogin");
 let btn_crear = document.getElementById("btn_submit");
+const habilidades = [
+	{
+		danio: 20,
+		nombre: "Bola de Fuego",
+	},
+	{
+		danio: 15,
+		nombre: "Lanza de Hielo",
+	},
+	{
+		danio: 10,
+		nombre: "Rayo",
+	},
+	{
+		danio: 25,
+		nombre: "Curacion",
+	},
+	{
+		danio: 15,
+		nombre: "Disparo",
+	},
+	{
+		danio: 40,
+		nombre: "Disparo Mortal",
+	},
+	{
+		danio: 50,
+		nombre: "Curacion Superior",
+	},
+	{
+		danio: 20,
+		nombre: "Golpe Siniestro",
+	},
+	{
+		danio: 20,
+		nombre: "Sentencia",
+	},
+	{
+		danio: 25,
+		nombre: "Choque Sagrado",
+	},
+	{
+		danio: 15,
+		nombre: "Bola de Sombras",
+	},
+	{
+		danio: 25,
+		nombre: "Choque de Tierra",
+	},
+];
 
-btn_crear.addEventListener("click",()=>{
+localStorage.setItem("habilidades", JSON.stringify(habilidades));
 
-    if (validar_formulario()) {
-
-        generarcuenta();
-    }
-    
-})
+btn_crear.addEventListener("click", () => {
+	if (validar_formulario()) {
+		generarcuenta();
+	}
+});
 
 function validar_formulario() {
-    avisos.innerHTML = "";
+	avisos.innerHTML = "";
 
-    let input_nombre = document.getElementById("nombreusuario").value;
-    let input_contrasenia = document.getElementById("contraseniausuario").value;
+	let input_nombre = document.getElementById("nombreusuario").value;
+	let input_contrasenia = document.getElementById("contraseniausuario").value;
 
-    let arreglo_mensajes = new Array();
-    if (!input_nombre) {
-        arreglo_mensajes.push("Ingrese nombre");
-    }
-    if (!input_contrasenia) {
-        arreglo_mensajes.push("Ingrese contrasenia");
-    }
-    if (arreglo_mensajes.length > 0) {
+	let arreglo_mensajes = new Array();
+	if (!input_nombre) {
+		arreglo_mensajes.push("Ingrese nombre");
+	}
+	if (!input_contrasenia) {
+		arreglo_mensajes.push("Ingrese contrasenia");
+	}
+	if (arreglo_mensajes.length > 0) {
+		let lista = document.createElement("ul");
+		lista.textContent = "No es posible cargar los datos: ";
 
-        let lista = document.createElement("ul");
-        lista.textContent = "No es posible cargar los datos: ";
+		arreglo_mensajes.forEach((element) => {
+			lista.appendChild(crear_li(element));
+		});
+		avisos.appendChild(lista);
+	}
 
-        arreglo_mensajes.forEach(element => {
-            lista.appendChild(crear_li(element));
-        });
-        avisos.appendChild(lista);
-    }
-
-    return arreglo_mensajes.length == 0;
-
+	return arreglo_mensajes.length == 0;
 }
 
 function crear_li(mensaje) {
-    let li = document.createElement("li");
-    li.textContent = mensaje;
-    return li;
+	let li = document.createElement("li");
+	li.textContent = mensaje;
+	return li;
 }
 
 function generarcuenta() {
+	let nombre = document.getElementById("nombreusuario").value;
+	let contrasenia = document.getElementById("contraseniausuario").value;
 
-
-    let nombre = document.getElementById("nombreusuario").value;
-    let contrasenia = document.getElementById("contraseniausuario").value;
-
-    let cuenta = new Cuenta(nombre, contrasenia);
-    listacuentas.push(cuenta);
-    guardar_cuenta(cuenta);
-    resetear_form();
-    window.location.href = "characterselec.html";
-
+	guardar_cuenta(nombre, contrasenia);
+	resetear_form();
+	window.location.href = "/characterselec.html";
 }
-
 
 function resetear_form() {
-
-    document.getElementById("nombreusuario").value = "";
-    document.getElementById("contraseniausuario").value = "";
-
+	document.getElementById("nombreusuario").value = "";
+	document.getElementById("contraseniausuario").value = "";
 }
 
-
-function guardar_cuenta(cuenta) {
-
-    let item = localStorage.getItem(clave_cuentas);
-
-    if (item) {
-        //actualizo la coleccion guardada.
-
-        let almacenados = JSON.parse(localStorage.getItem(clave_cuentas));
-        almacenados.push(cuenta);
-
-        let coleccion = JSON.stringify(almacenados);
-        localStorage.setItem(clave_cuentas, coleccion);
-
-    } else {
-        //almaceno la primera vez
-        let almacenados = new Array();
-        almacenados.push(cuenta);
-
-        let coleccion = JSON.stringify(almacenados);
-        localStorage.setItem(clave_cuentas, coleccion);
-    }
+function guardar_cuenta(nombre, contrasenia) {
+	localStorage.setItem(
+		clave_cuentas,
+		JSON.stringify({ username: nombre, password: contrasenia, personajes: [] })
+	);
 }
-
-
-
-let boladefuego = new Habilidad(1, 20, "Bola de Fuego");
-let lanzadehielo = new Habilidad(2, 15, "Lanza de Hielo");
-let rayo = new Habilidad(3, 10, "Rayo");
-let curacion = new Habilidad(4, 25, "Curacion");
-let disparo = new Habilidad(5, 15, "Disparo");
-let disparomortal = new Habilidad(6, 40, "Disparo Mortal");
-let curacionsuperior = new Habilidad(7, 50, "Curacion Superior");
-let golpesiniestro = new Habilidad(8, 20, "Golpe Siniestro");
-let sentencia = new Habilidad(9, 20, "Sentencia");
-let choquesagrado = new Habilidad(10, 25, "Choque Sagrado");
-let boladesombras = new Habilidad(11, 15, "Bola de Sombras");
-let choquedetierra = new Habilidad(12, 25, "Choque de Tierra");
-
-librohabilidades = new Array();
-listahabilidades1 = new Array();
-listahabilidades2 = new Array();
-
-librohabilidades.push(boladefuego);
-librohabilidades.push(rayo);
-librohabilidades.push(disparo);
-librohabilidades.push(curacionsuperior);
-librohabilidades.push(sentencia);
-librohabilidades.push(lanzadehielo);
-librohabilidades.push(boladesombras);
-librohabilidades.push(curacion);
-librohabilidades.push(disparomortal);
-librohabilidades.push(golpesiniestro);
-librohabilidades.push(choquesagrado);
-librohabilidades.push(choquedetierra);
-
-listahabilidades1.push(boladefuego);
-listahabilidades1.push(rayo);
-listahabilidades1.push(disparo);
-listahabilidades1.push(curacionsuperior);
-listahabilidades1.push(sentencia);
-listahabilidades1.push(boladesombras);
-
-listahabilidades2.push(lanzadehielo);
-listahabilidades2.push(curacion);
-listahabilidades2.push(disparomortal);
-listahabilidades2.push(golpesiniestro);
-listahabilidades2.push(choquesagrado);
-listahabilidades2.push(choquedetierra);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
