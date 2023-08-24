@@ -157,3 +157,46 @@ function resetear_form() {
 	document.getElementById("clasepersonaje").value = "";
 	document.getElementById("fotopersonaje").value = "";
 }
+
+
+//ordenar alfabeticamente
+const selectElement = document.getElementById("selecthabilidades");
+const sortButton = document.getElementById("btn_ordenaralfabeticamente");
+
+sortButton.addEventListener("click", sortOptions);
+
+//sort
+function sortOptions() {
+	const options = Array.from(selectElement.options);
+	options.sort((a, b) => a.text.localeCompare(b.text));
+
+	//limpiamos las opciones
+	selectElement.innerHTML = '';
+
+	//volvemos a poner las opciones ordenadas
+	options.forEach(option => {
+		selectElement.appendChild(option);
+	});
+}
+
+//ordenar por danio
+const selectElement2 = document.getElementById("selecthabilidades");
+const sortButton2 = document.getElementById("btn_ordenarpordanio");
+
+sortButton2.addEventListener("click", sortOptions2);
+
+//sort
+function sortOptions2() {
+	const options = Array.from(selectElement.options);
+	options.sort((a, b) => parseInt(a.getAttribute("data-danio")) - parseInt(b.getAttribute("data-danio")));
+
+	//limpiamos las opciones
+	selectElement.innerHTML = '';
+
+	//volvemos a poner las opciones ordenadas
+	options.forEach(option => {
+		selectElement.appendChild(option);
+	});
+}
+
+
