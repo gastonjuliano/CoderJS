@@ -16,10 +16,8 @@
 </head>
 
 <body class="bodycharacterselec">
+    <h1 style="font-size: 50px; padding-top: 20px;">Creacion de Personajes</h1>
     <div id="formulariopersonajes">
-        <h1>Creacion de Personajes</h1>
-
-        <div id="blizz_cards"></div>
         <div id="avisos">
         </div>
         <form>
@@ -40,6 +38,12 @@
             <button type="button" id="btn_ordenaralfabeticamente">Desea ordenar las habiliades alfabeticamente?</button>
             <br><br>
             <button type="button" id="btn_ordenarpordanio">Desea ordenar las habiliades por daño?</button>
+            <br><br>
+            <div class="carousel-container">
+                <div id="blizz_cards" class="blizz_carousel">
+                    <div id="card_loading" class="spinner"></div>
+                </div>
+            </div>
             <br><br>
             <button type="button" id="btn_crear">Ingresar</button>
         </form>

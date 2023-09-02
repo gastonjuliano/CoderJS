@@ -23,9 +23,18 @@ app.get("/blizzData", async (req, res) => {
 	const blizz_data = await axios.get(
 		"https://us.shop.battle.net/api/browsing/family/world-of-warcraft?locale=es-es"
 	);
-
 	const data = await blizz_data.data;
+	const mountCards = data.browsingCardGroups.filter(
+		(c) => c.id === "mounts"
+	)[0];
 
-	res.status(200).send(data);
+	const response = await axios.get(
+		`https://us.shop.battle.net/api/card-collection?id=${mountCards.cardIds.join(
+			","
+		)}&locale=es-es`
+	);
+	const cards = response.data;
+
+	res.status(200).send(cards);
 });
 app.listen(3000, () => console.log("listening on port 3000"));
